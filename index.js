@@ -36,13 +36,13 @@ module.exports = postcss.plugin('postcss-ltr-rtl-detect', function (options) {
 
         css.eachDecl(function (decl) {
             if (decl.value) {
-                processDecl(decl, newOptions);
+                detectDecl(decl, newOptions);
             }
         });
     };
 });
 
-function processDecl(decl, rule) {
+function detectDecl(decl, rule) {
     const prop = decl.prop;
     const value = decl.value;
 
@@ -74,11 +74,11 @@ function processDecl(decl, rule) {
 }
 
 function warnIt(msg = '', decl, prop, value) {
-    const pattern = `%s found on line %l. ${msg}`;
+    const message = `%s found on line %l. ${msg}`;
     const from = postcssResult.opts.from || '[source file not specified]';
 
     postcssResult.warn(
-        pattern
+        message
             .replace('%s', `${prop}: ${value};`)
             .replace('%l', decl.source.start.line)
             .replace('%f', from)
