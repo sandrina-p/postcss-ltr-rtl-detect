@@ -56,7 +56,7 @@ Warning shown when a unit value is found (`unitsDetect: true` required).
 
 
 ## Contribute
-Any doubt or suggestion you may have feel free to create an issue on [github repo]().
+Any doubt or suggestion you may have feel free to create an issue on [github repo](https://github.com/sandrina-p/postcss-ltr-rtl-detect).
 
 
 ## License

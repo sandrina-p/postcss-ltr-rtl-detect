@@ -1,41 +1,41 @@
 {
-  "name": "postcss-ltr-rtl-detect",
-  "version": "1.0.0",
-  "description": "Detects properties in your css that influence LTR and RTL layouts",
-  "main": "index.js",
-  "dependencies": {},
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "git": "https://github.com/sandrina-p/postcss-ltr-rtl-detect.git",
-  "keywords": [
-    "direction",
-    "ltr",
-    "rtl",
-    "properties",
-    "detect",
-    "search",
-    "warn",
-    "values",
-    "padding",
-    "margin",
-    "text-align",
-    "float",
-    "layout",
-    "css",
-    "postcss",
-    "mixins",
-    "postcss-plugins"
-  ],
-  "author": "Sandrina Pereira <sandrin4pereir4@gmail.com> (http://sandrina-p.net)",
-  "license": "MIT",
-  "dependencies": {
-    "chalk": "^1.1.0",
-    "postcss": "^4.1.0"
-  },
-  "devDependencies": {
-    "mocha": "^2.2.5",
-    "postcss-reporter": "^0.4.0"
-  },
+    "name": "postcss-ltr-rtl-detect",
+    "version": "1.0.0",
+    "description": "Detects properties in your css that influence LTR and RTL layouts",
+    "main": "index.js",
+    "dependencies": {},
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "git": "https://github.com/sandrina-p/postcss-ltr-rtl-detect.git",
+    "keywords": [
+        "direction",
+        "ltr",
+        "rtl",
+        "properties",
+        "detect",
+        "search",
+        "warn",
+        "values",
+        "padding",
+        "margin",
+        "text-align",
+        "float",
+        "layout",
+        "css",
+        "postcss",
+        "mixins",
+        "postcss-plugins"
+    ],
+    "author": "Sandrina Pereira <sandrin4pereir4@gmail.com> (http://sandrina-p.net)",
+    "license": "MIT",
+    "dependencies": {
+        "chalk": "^1.1.0",
+        "postcss": "^4.1.0"
+    },
+    "devDependencies": {
+        "mocha": "^2.2.5",
+        "postcss-reporter": "^0.4.0"
+    }
 }
