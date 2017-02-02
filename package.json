@@ -1,6 +1,6 @@
 {
   "name": "postcss-ltr-rtl-detect",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Detects properties in your css that influence LTR and RTL layouts",
   "main": "index.js",
   "scripts": {
