@@ -14,7 +14,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "git": "https://github.com/sandrina-p/postcss-ltr-rtl-detect.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andyjansson/postcss-functions.git"
+  },
   "keywords": [
     "direction",
     "ltr",
