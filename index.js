@@ -1,6 +1,4 @@
 // require
-const fs = require('fs');
-const path = require('path');
 const postcss = require('postcss');
 
 // validations
