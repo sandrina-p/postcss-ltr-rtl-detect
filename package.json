@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andyjansson/postcss-functions.git"
+    "url": "git+https://github.com/sandrina-p/postcss-ltr-rtl-detect.git"
   },
   "keywords": [
     "direction",
