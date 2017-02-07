@@ -63,7 +63,7 @@ function detectDecl(decl, rule) {
         }
     }
 
-    if (rule.searchUnits && decl.parent.selector !== ':root'
+    if (rule.unitsDetect && decl.parent.selector !== ':root'
         && (value.search(unitsPx) !== -1
         || value.search(unitsRem) !== -1
         || value.search(unitsEm) !== -1)) {
