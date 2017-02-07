@@ -50,7 +50,7 @@ function detectDecl(decl, rule) {
         case 'padding' && value.split(' ').length > 3:
         case 'padding-left':
         case 'padding-right':
-        case 'margin':
+        case 'margin' && value.split(' ').length > 3:
         case 'margin-left':
         case 'margin-right':
         case 'float':
