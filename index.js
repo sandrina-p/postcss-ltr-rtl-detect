@@ -4,24 +4,37 @@ const postcss = require('postcss');
 // validations
 const properties = [
     'padding',
-    'padding-left',
+    'padding-top',
     'padding-right',
+    'padding-bottom',
+    'padding-left',
     'margin',
-    'margin-left',
+    'margin-top',
     'margin-right',
-    'text-align',
+    'margin-bottom',
+    'margin-left',
+    'border',
+    'border-top',
+    'border-right',
+    'border-bottom',
+    'border-left',
     'float',
     'left',
     'right',
+    'text-align',
 ];
 const unitsPx = new RegExp('.+px');
 const unitsRem = new RegExp('.+rem');
 const unitsEm = new RegExp('.+em');
 
-const optionsDefault = {
-    unitsDetect: false,
+const defaultProps = {
+    unitsPxDetect: false,
+    unitsRemDetect: false,
+    unitsEmDetect: false,
+    importantDetect: false,
     propsMsg: 'Use a @mixin to support LTR vs RTL.',
     unitsMsg: 'Consider using a variable.',
+    importantMsg: 'Consider reviewing your code and remove !important rule.',
 };
 
 let postcssResult = '';
@@ -30,7 +43,7 @@ module.exports = postcss.plugin('postcss-ltr-rtl-detect', function (options) {
     return function (css, result) {
         postcssResult = result;
 
-        const newOptions = Object.assign({}, optionsDefault, options);
+        const newOptions = Object.assign({}, defaultProps, options);
 
         css.eachDecl(function (decl) {
             if (decl.value) {
@@ -45,29 +58,24 @@ function detectDecl(decl, rule) {
     const value = decl.value;
 
     if (properties.indexOf(prop) > -1) {
-        switch (prop) {
-        case 'text-align' && value !== 'center':
-        case 'padding' && value.split(' ').length > 3:
-        case 'padding-left':
-        case 'padding-right':
-        case 'margin' && value.split(' ').length > 3:
-        case 'margin-left':
-        case 'margin-right':
-        case 'float':
-        case 'left':
-        case 'right':
-            warnIt(rule.propsMsg, decl, prop, value);
-            break;
-        default:
-            break;
-        }
+        warnIt(rule.propsMsg, decl, prop, value);
     }
 
-    if (rule.unitsDetect && decl.parent.selector !== ':root'
-        && (value.search(unitsPx) !== -1
-        || value.search(unitsRem) !== -1
-        || value.search(unitsEm) !== -1)) {
+    if (rule.unitsPxDetect && decl.parent.selector !== ':root' && value.search(unitsPx) !== -1) {
         warnIt(rule.unitsMsg, decl, prop, value);
+        console.log(decl, rule);
+    }
+
+    if (rule.unitsRemDetect && decl.parent.selector !== ':root' && value.search(unitsRem) !== -1) {
+        warnIt(rule.unitsMsg, decl, prop, value);
+    }
+
+    if (rule.unitsEmDetect && decl.parent.selector !== ':root' && value.search(unitsEm) !== -1) {
+        warnIt(rule.unitsMsg, decl, prop, value);
+    }
+
+    if (decl.important && rule.importantDetect) {
+        warnIt(rule.importantMsg, decl, prop, value);
     }
 }
 
