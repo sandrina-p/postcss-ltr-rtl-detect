@@ -61,22 +61,24 @@ function detectDecl(decl, rule) {
         warnIt(rule.propsMsg, decl, prop, value);
     }
 
-    if (rule.unitsPxDetect && decl.parent.selector !== ':root' && value.search(unitsPx) !== -1) {
-        warnIt(rule.unitsMsg, decl, prop, value);
-        console.log(decl, rule);
+    if (decl.parent.name !== 'font-face' && decl.parent.selector !== ':root') {
+        if (rule.unitsPxDetect && value.search(unitsPx) !== -1) {
+            warnIt(rule.unitsMsg, decl, prop, value);
+        }
+
+        if (rule.unitsRemDetect && value.search(unitsRem) !== -1) {
+            warnIt(rule.unitsMsg, decl, prop, value);
+        }
+
+        if (rule.unitsEmDetect && value.search(unitsEm) !== -1) {
+            warnIt(rule.unitsMsg, decl, prop, value);
+        }
+
+        if (decl.important && rule.importantDetect) {
+            warnIt(rule.importantMsg, decl, prop, value);
+        }
     }
 
-    if (rule.unitsRemDetect && decl.parent.selector !== ':root' && value.search(unitsRem) !== -1) {
-        warnIt(rule.unitsMsg, decl, prop, value);
-    }
-
-    if (rule.unitsEmDetect && decl.parent.selector !== ':root' && value.search(unitsEm) !== -1) {
-        warnIt(rule.unitsMsg, decl, prop, value);
-    }
-
-    if (decl.important && rule.importantDetect) {
-        warnIt(rule.importantMsg, decl, prop, value);
-    }
 }
 
 function warnIt(msg = '', decl, prop, value) {
