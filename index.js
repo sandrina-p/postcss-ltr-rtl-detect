@@ -25,7 +25,7 @@ const propertiesAlign = [
 ];
 
 // properties that do not influence LTR RTL
-const propertiesAgressive = [
+const propertiesAggressive = [
     'padding-top',
     'padding-bottom',
     'margin-top',
@@ -45,11 +45,11 @@ const unitsEm = new RegExp('.+em');
 
 // default props
 const defaultProps = {
-    agressive: true,
-    agressiveMsg: 'Use a @mixin to keep consistence on code.',
-    propsMsg: 'Use a @mixin to support LTR vs RTL.',
+    aggressive: true,
+    aggressiveMsg: 'Use a @mixin to keep consistence on code.',
     importantDetect: false,
     importantMsg: 'Consider reviewing your code and remove !important rule.',
+    propsMsg: 'Use a @mixin to support LTR vs RTL.',
     unitsPxDetect: false,
     unitsRemDetect: false,
     unitsEmDetect: false,
@@ -85,8 +85,8 @@ function detectDecl(decl, rule) {
 
 
     /* detect properties that don't change on ltr-rtl */
-    if (rule.agressive && propertiesAgressive.indexOf(prop) > -1) {
-        warnIt(rule.agressiveMsg, decl, prop, value);
+    if (rule.aggressive && propertiesAggressive.indexOf(prop) > -1) {
+        warnIt(rule.aggressiveMsg, decl, prop, value);
         return false;
     }
 
@@ -101,8 +101,8 @@ function detectDecl(decl, rule) {
         case 2:
         case 3:
         default: {
-            if (rule.agressive) {
-                warnIt(rule.agressiveMsg, decl, prop, value);
+            if (rule.aggressive) {
+                warnIt(rule.aggressiveMsg, decl, prop, value);
             }
             break;
         }
@@ -114,8 +114,8 @@ function detectDecl(decl, rule) {
     /* detect property that is about alignments */
     if (propertiesAlign.indexOf(prop) > -1) {
         if (value === 'center') {
-            if (rule.agressive) {
-                warnIt(rule.agressiveMsg, decl, prop, value);
+            if (rule.aggressive) {
+                warnIt(rule.aggressiveMsg, decl, prop, value);
             }
         } else {
             warnIt(rule.propsMsg, decl, prop, value);
