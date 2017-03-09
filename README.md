@@ -27,14 +27,15 @@
 Done!
 
 **Properties detected:**  
-`padding`, `padding-left`, `padding-right`  
-`margin`, `margin-left`, `margin-right`   
+`padding`, `padding-top`, `padding-right`, `padding-bottom`, `padding-left`  
+`margin`, `margin-top`, `margin-right`, `margin-bottom`, `margin-left`  
+`border`, `border-top`, `border-right`, `border-bottom`, `border-left`
 `left`, `right`  
 `text-align`   
 `float`  
 
 ## Usage
-All warnings are written to postcss `result.messages`.  
+All warnings are written to postCSS `result.messages`.  
 You'll need a tool to handle them, for example, [postcss-reporter](https://www.npmjs.com/package/postcss-browser-reporter).
 
 ```js
@@ -49,35 +50,57 @@ You'll need a tool to handle them, for example, [postcss-reporter](https://www.n
 
 ### Options
 
+#### `propsMsg` (optional)
+Warning shown when a propriety that affects the layout RTL vs LTR is found.  
+**Type:** `string`  
+**Default:** Use a @mixin to support LTR vs RTL.
+
+#### `unitsPxDetect` (optional)
+Detects properties that have `px` value instead of variable.  
+**Type:** `Bollean`  
+**Default:** false
+
+#### `unitsRemDetect` (optional)
+Detects properties that have `rem` value instead of variable.  
+**Type:** `Bollean`  
+**Default:** false
+
+#### `unitsEmDetect` (optional)
+Detects properties that have `em` value instead of variable.  
+**Type:** `Bollean`  
+**Default:** false
+
+#### `importantDetect` (optional)
+Detects properties that have `!important`.  
+**Type:** `Bollean`  
+**Default:** false
+
+#### `unitsMsg` (optional)
+Warning shown when a unit value is found (`unitsDetect: true` required).  
+**Type:** `string`  
+**Default:** Consider using a variable.
+
+#### `importantMsg` (optional)
+Warning shown when a unit value is found (`unitsDetect: true` required).  
+**Type:** `string`  
+**Default:** Consider reviewing your code and remove !important rule.
+
+
+#### Example with some options:
+
 ```js
 
     /* activate units detection */
     postcss() {
         return [
             require('postcss-ltr-rtl-detect')({
-                unitsDetect: true,
+                importantDetect: false,
             }),
             require('postcss-reporter'),
         ];
     }
 
 ```
-
-#### `propsMsg` (optional)
-Warning shown when a propriety that affects the layout RTL vs LTR is found.  
-**Type:** `string`  
-**Default:** Consider using a variable.
-
-#### `unitsDetect` (optional)
-Detects properties that have `px`, `rem` or `em`.  
-**Type:** `Bollean`  
-**Default:** false
-
-
-#### `unitsMsg` (optional)
-Warning shown when a unit value is found (`unitsDetect: true` required).  
-**Type:** `string`  
-**Default:** Use a @mixin to support LTR vs RTL.
 
 
 ## Contribute
