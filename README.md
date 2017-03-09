@@ -73,12 +73,13 @@ Warning shown when an *Aggressive Property* is found.
 *item.css*
 ```css
     .item {
+        @mixin margin end, 1rem;
         margint-top: 10%;
     }
 ```
 
 **Console warning:**
->  margint-top: 10%; found on line 2. Use a @mixin to keep consistence on code.
+>  margint-top: 10%; found on line 3. Use a @mixin to keep consistence on code.
 
 ---
 
@@ -162,6 +163,7 @@ Warning shown when a unit value is found (`unitsDetect: true` required).
         return [
             require('postcss-ltr-rtl-detect')({
                 importantDetect: true,
+                importantMsg: "don't you dare using it",
                 unitsPxDetect: true
             }),
             require('postcss-reporter'),
