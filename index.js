@@ -49,6 +49,7 @@ const defaultProps = {
     aggressiveMsg: 'Use a @mixin to keep consistence on code.',
     importantDetect: false,
     importantMsg: 'Consider reviewing your code and remove !important rule.',
+    propsDetect: true,
     propsMsg: 'Use a @mixin to support LTR vs RTL.',
     unitsPxDetect: false,
     unitsRemDetect: false,
@@ -78,7 +79,7 @@ function detectDecl(decl, rule) {
 
 
     /* detect propertiesBasic */
-    if (propertiesBasic.indexOf(prop) > -1) {
+    if (rule.propsDetect && propertiesBasic.indexOf(prop) > -1) {
         warnIt(rule.propsMsg, decl, prop, value);
         return false;
     }
@@ -95,7 +96,9 @@ function detectDecl(decl, rule) {
     if (propertiesShortHand.indexOf(prop) > -1) {
         switch (value.split(' ').length) {
         case 4:
-            warnIt(rule.propsMsg, decl, prop, value);
+            if (rule.propsDetect) {
+                warnIt(rule.propsMsg, decl, prop, value);
+            }
             break;
         case 1:
         case 2:
@@ -117,7 +120,7 @@ function detectDecl(decl, rule) {
             if (rule.aggressive) {
                 warnIt(rule.aggressiveMsg, decl, prop, value);
             }
-        } else {
+        } else if (rule.propsDetect) {
             warnIt(rule.propsMsg, decl, prop, value);
         }
         return false;

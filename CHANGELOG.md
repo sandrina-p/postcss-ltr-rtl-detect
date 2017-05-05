@@ -1,6 +1,10 @@
 ## Backlog
 - Add unit tests
 
+## 1.1.3
+- add `propsDetect` options
+- add `postcss-reporter` as dev
+
 ## 1.1.0
 - add `agressive` and `agressiveMsg` options
 - improve performance

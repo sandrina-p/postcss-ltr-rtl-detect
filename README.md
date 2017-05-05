@@ -60,7 +60,7 @@ You'll need a tool to handle them, for example, [postcss-reporter](https://www.n
 
 #### `aggressive`
 Detects properties that don't influence layout LTR RTL like "margin-top".  
-**Type:** `Bollean`  
+**Type:** `Boolean`  
 **Default:** true
 
 #### `aggressiveMsg`
@@ -74,18 +74,18 @@ Warning shown when an *Aggressive Property* is found.
 ```css
     .item {
         @mixin margin end, 1rem;
-        margint-top: 10%;
+        margin-top: 10%;
     }
 ```
 
 **Console warning:**
->  margint-top: 10%; found on line 3. Use a @mixin to keep consistence on code.
+>  margin-top: 10%; found on line 3. Use a @mixin to keep consistence on code.
 
 ---
 
 #### `importantDetect`
 Detects properties that have `!important`.  
-**Type:** `Bollean`  
+**Type:** `Boolean`  
 **Default:** false
 
 #### `importantMsg`
@@ -98,34 +98,39 @@ Warning shown when a unit value is found (`unitsDetect: true` required).
 *item.css*
 ```css
     .item {
-        margint-top: 10%!important;
+        margin-top: 10%!important;
     }
 ```
 
 **Console warning:**
->  margint-top: 10%!important; found on line 2. Consider reviewing your code and remove !important rule...
+>  margin-top: 10%!important; found on line 2. Consider reviewing your code and remove !important rule...
 
 ---
+
+#### `propsDetect`
+Detects properties that influence `ltr` | `rtl` layout.  
+**Type:** `Boolean`  
+**Default:** true
 
 #### `propsMsg`
 Warning shown when a propriety that affects the layout RTL vs LTR is found.  
 **Type:** `string`  
 **Default:** Use a @mixin to support LTR vs RTL.
 
+
 #### `unitsPxDetect`
 Detects properties that have `px` value instead of variable.  
-**Type:** `Bollean`  
+**Type:** `Boolean`  
 **Default:** false
-
 
 #### `unitsRemDetect`
 Detects properties that have `rem` value instead of variable.  
-**Type:** `Bollean`  
+**Type:** `Boolean`  
 **Default:** false
 
 #### `unitsEmDetect`
 Detects properties that have `em` value instead of variable.  
-**Type:** `Bollean`  
+**Type:** `Boolean`  
 **Default:** false
 
 #### `unitsMsg`
