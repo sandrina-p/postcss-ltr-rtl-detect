@@ -1,8 +1,8 @@
 ## Backlog
 - Add unit tests
 
-## 1.1.3
-- add `propsDetect` options
+## 1.2.0
+- add `propsDetect` option
 - add `postcss-reporter` as dev
 
 ## 1.1.0
