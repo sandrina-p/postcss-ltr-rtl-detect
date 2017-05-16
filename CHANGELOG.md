@@ -1,6 +1,9 @@
 ## Backlog
 - Add unit tests
 
+## 1.3.0
+- add option to ignore warnings with `smell-ignore` comment on css rule.
+
 ## 1.2.0
 - add `propsDetect` option
 - add `postcss-reporter` as dev

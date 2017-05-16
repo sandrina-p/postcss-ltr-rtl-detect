@@ -64,6 +64,12 @@ function detectDecl(decl, rule) {
     const prop = decl.prop;
     const value = decl.value;
 
+    /* if "ignore-smell" is found on value raw,return the value only without displaying warnings */
+    if (decl.raws.value && decl.raws.value.raw.indexOf('smell-ignore') > -1 ) {
+        decl.raws.value.raw = decl.value;
+        return false;
+    }
+
     /* detect property that has px, rem or em */
     if (decl.parent.name !== 'font-face' && decl.parent.selector !== ':root') {
         if (rule.unitsPxDetect && value.search(unitsPx) !== -1) {

@@ -138,8 +138,8 @@ Warning shown when a unit value is found (`unitsDetect: true` required).
 **Type:** `string`  
 **Default:** Consider using a variable.
 
-**Example**
 
+**Example**
 *item.css*
 ```css
     .item {
@@ -150,14 +150,30 @@ Warning shown when a unit value is found (`unitsDetect: true` required).
 ```
 
 **Console warning:**
->  font-size: 10px; found on line 2. Consider using a variable.
+>  border: 1px solid red; found on line 2. Consider using a variable.
 >  padding: 15px; found on line 3. Consider using a variable.
 >  font-size: 1rem; found on line 4. Consider using a variable.
 
 ---
 
+### Ignore a specific rule
+If for some reason you don't want to ignore the css smell, you can add `/* smell-ignore */` as comment on CSS rule.
+- Notice to write `/* smell-ignore */` after the rule but *before* the semicolon `;`, otherwise it won't work.
+
+**Example**
+*item.css*
+```css
+    .item {
+    	border: 1px solid red /* smell-ignore */;
+        padding: 15px;
+    }
+```
+
+**Console warning:**
+>  padding: 15px; found on line 3. Consider using a variable.
 
 
+---
 
 ### Usage example with some options
 
