@@ -1,6 +1,9 @@
 ## Backlog
 - Add unit tests
 
+## 1.4.0
+- Update `postcss-reporter` to from 0.4.x to 3.0.0
+
 ## 1.3.0
 - add option to ignore warnings with `smell-ignore` comment on css rule.
 
