@@ -55,6 +55,7 @@ const defaultProps = {
     unitsRemDetect: false,
     unitsEmDetect: false,
     unitsMsg: 'Consider using a variable.',
+    ignoreNodeModules: true,
 };
 
 let postcssResult = '';
@@ -64,9 +65,13 @@ function detectDecl(decl, rule) {
     const prop = decl.prop;
     const value = decl.value;
 
-    /* if "ignore-smell" is found on value raw,return the value only without displaying warnings */
+    /* if "ignore-smell" is found on value raw, return the value only without displaying warnings */
     if (decl.raws.value && decl.raws.value.raw.indexOf('smell-ignore') > -1 ) {
         decl.raws.value.raw = decl.value;
+        return false;
+    }
+
+    if (rule.ignoreNodeModules && decl.source.input.file && decl.source.input.file.indexOf('node_modules') > -1) {
         return false;
     }
 
