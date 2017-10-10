@@ -153,6 +153,11 @@ Warning shown when a unit value is found (`unitsDetect: true` required).
 >  padding: 15px; found on line 3. Consider using a variable.
 >  font-size: 1rem; found on line 4. Consider using a variable.
 
+#### `ignoreNodeModules`
+Don't show warnings if css file is at `node_modules/`.  
+**Type:** `bool`  
+**Default:** true.
+
 ---
 
 ### Ignore a specific rule
@@ -171,11 +176,6 @@ If for some reason you don't want to ignore the css smell, you can add `/* smell
 **Console warning:**
 >  padding: 15px; found on line 3. Consider using a variable.
 
-
-#### `ignoreNodeModules`
-Don't show warnings if css file is at `node_modules/`.  
-**Type:** `bool`  
-**Default:** true.
 ---
 
 ### Usage example with some options
