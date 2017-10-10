@@ -1,6 +1,9 @@
 ## Backlog
 - Add unit tests
 
+## 1.5.1
+- Update `README.md`
+
 ## 1.5.0
 - Add option `ignoreNodeModules`
 
