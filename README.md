@@ -138,7 +138,6 @@ Warning shown when a unit value is found (`unitsDetect: true` required).
 **Type:** `string`  
 **Default:** Consider using a variable.
 
-
 **Example**
 *item.css*
 ```css
@@ -173,6 +172,10 @@ If for some reason you don't want to ignore the css smell, you can add `/* smell
 >  padding: 15px; found on line 3. Consider using a variable.
 
 
+#### `ignoreNodeModules`
+Don't show warnings if css file is at `node_modules/`.  
+**Type:** `bool`  
+**Default:** true.
 ---
 
 ### Usage example with some options

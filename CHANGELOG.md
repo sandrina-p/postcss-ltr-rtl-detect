@@ -1,6 +1,9 @@
 ## Backlog
 - Add unit tests
 
+## 1.5.0
+- Add option `ignoreNodeModules`
+
 ## 1.4.0
 - Update `postcss-reporter` to from 0.4.x to 3.0.0
 
